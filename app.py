@@ -49,38 +49,23 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# ---------------- Load Models and Encoders ----------------
+# ---------------- Load Artifacts from Hugging Face ----------------
 @st.cache_resource
 def load_artifacts():
     repo_id = "PavanKumarD/Credit_Card_Fraud_Models"
 
-    # Download and load scaler
-    scaler = joblib.load(
-        hf_hub_download(repo_id=repo_id, filename="scaler.pkl")
-    )
-
-    # Download and load label encoders
-    encoders = joblib.load(
-        hf_hub_download(repo_id=repo_id, filename="label_encoders.pkl")
-    )
-
-    # Download and load each model
+    scaler = joblib.load(hf_hub_download(repo_id=repo_id, filename="scaler.pkl"))
+    encoders = joblib.load(hf_hub_download(repo_id=repo_id, filename="label_encoders.pkl"))
     models = {
-        "Logistic Regression": joblib.load(
-            hf_hub_download(repo_id=repo_id, filename="Logistic Regression_model.pkl")
-        ),
-        "Decision Tree": joblib.load(
-            hf_hub_download(repo_id=repo_id, filename="Decision Tree_model.pkl")
-        ),
-        "Random Forest": joblib.load(
-            hf_hub_download(repo_id=repo_id, filename="Random Forest_model.pkl")
-        ),
-        "XGBoost": joblib.load(
-            hf_hub_download(repo_id=repo_id, filename="xgboost_model.pkl")
-        ),
+        "Logistic Regression": joblib.load(hf_hub_download(repo_id=repo_id, filename="Logistic Regression_model.pkl")),
+        "Decision Tree": joblib.load(hf_hub_download(repo_id=repo_id, filename="Decision Tree_model.pkl")),
+        "Random Forest": joblib.load(hf_hub_download(repo_id=repo_id, filename="Random Forest_model.pkl")),
+        "XGBoost": joblib.load(hf_hub_download(repo_id=repo_id, filename="xgboost_model.pkl")),
     }
-
     return scaler, encoders, models
+
+# ✅ Call the function to load everything
+scaler, encoders, models = load_artifacts()
 
 feature_order = [
     'cc_num', 'merchant', 'category', 'amt', 'gender', 'city', 'state', 'zip', 'lat', 'long',
