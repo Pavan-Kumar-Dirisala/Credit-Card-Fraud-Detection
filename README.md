@@ -6,7 +6,7 @@ A machine learning-powered web app that predicts whether a credit card transacti
 
 ## 🚀 Live App
 
-🔗 **Try it now**: [Streamlit App](https://share.streamlit.io/your-username/Credit-Card-Fraud-Detection/main/app.py)
+🔗 **Try it now**: [Streamlit App]([https://share.streamlit.io/your-username/Credit-Card-Fraud-Detection/main/app.py](https://credit-card-fraud-detection-by-pavan.streamlit.app)
 
 ---
 
